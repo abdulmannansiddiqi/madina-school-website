@@ -1,12 +1,16 @@
 require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
+const teacherRoutes = require('./routes/teachers');
+const studentRoutes = require('./routes/students');
 
 const app = express();
 const PORT = process.env.PORT || 5000;
 
 app.use(cors());
 app.use(express.json());
+app.use('/api/teachers', teacherRoutes);
+app.use('/api/students', studentRoutes);
 
 app.get('/', (req, res) => {
   res.send('Madina Model School API is running!');
