@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const prisma = require('../lib/prisma');
+const verifyToken = require('../middleware/auth');
 
 // GET all news
 router.get('/', async (req, res) => {
@@ -10,12 +11,13 @@ router.get('/', async (req, res) => {
     });
     res.json(news);
   } catch (error) {
+    console.error(error);
     res.status(500).json({ error: 'Something went wrong' });
   }
 });
 
 // POST create news
-router.post('/', async (req, res) => {
+router.post('/', verifyToken, async (req, res) => {
   try {
     const { title, description, date, imageUrl, pdfUrl } = req.body;
 
@@ -31,12 +33,13 @@ router.post('/', async (req, res) => {
 
     res.status(201).json(newNews);
   } catch (error) {
+    console.error(error);
     res.status(500).json({ error: 'Something went wrong' });
   }
 });
 
 // PUT update news
-router.put('/:id', async (req, res) => {
+router.put('/:id', verifyToken, async (req, res) => {
   try {
     const { id } = req.params;
     const { title, description, date, imageUrl, pdfUrl } = req.body;
@@ -54,12 +57,13 @@ router.put('/:id', async (req, res) => {
 
     res.json(updatedNews);
   } catch (error) {
+    console.error(error);
     res.status(500).json({ error: 'Something went wrong' });
   }
 });
 
 // DELETE news
-router.delete('/:id', async (req, res) => {
+router.delete('/:id', verifyToken, async (req, res) => {
   try {
     const { id } = req.params;
 
@@ -69,6 +73,7 @@ router.delete('/:id', async (req, res) => {
 
     res.json({ message: 'News deleted successfully' });
   } catch (error) {
+    console.error(error);
     res.status(500).json({ error: 'Something went wrong' });
   }
 });

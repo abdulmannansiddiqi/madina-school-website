@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const prisma = require('../lib/prisma');
+const verifyToken = require('../middleware/auth');
 
 router.get('/', async (req, res) => {
   try {
@@ -14,7 +15,7 @@ router.get('/', async (req, res) => {
 });
 
 // POST create a new teacher
-router.post('/', async (req, res) => {
+router.post('/',verifyToken, async (req, res) => {
   try {
     const { name, designation, subject, qualification, photoUrl, isPublic, showPhoto } = req.body;
 
@@ -29,7 +30,7 @@ router.post('/', async (req, res) => {
 });
 
 // PUT (update) a teacher by ID
-router.put('/:id', async (req, res) => {
+router.put('/:id',verifyToken, async (req, res) => {
   try {
     const { id } = req.params;
     const { name, designation, subject, qualification, photoUrl, isPublic, showPhoto } = req.body;
@@ -46,7 +47,7 @@ router.put('/:id', async (req, res) => {
 });
 
 // DELETE a teacher by ID
-router.delete('/:id', async (req, res) => {
+router.delete('/:id',verifyToken, async (req, res) => {
   try {
     const { id } = req.params;
 
