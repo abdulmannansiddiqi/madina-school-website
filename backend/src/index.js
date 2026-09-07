@@ -5,6 +5,7 @@ const teacherRoutes = require('./routes/teachers');
 const studentRoutes = require('./routes/students');
 const newsRoutes = require('./routes/news');
 const achievementRoutes = require('./routes/achievements');
+const authRoutes = require('./routes/auth');
 
 const app = express();
 const PORT = process.env.PORT || 5000;
@@ -15,6 +16,7 @@ app.use('/api/teachers', teacherRoutes);
 app.use('/api/students', studentRoutes);
 app.use('/api/news', newsRoutes);
 app.use('/api/achievements', achievementRoutes);
+app.use('/api/auth', authRoutes);
 
 app.get('/', (req, res) => {
   res.send('Madina Model School API is running!');
