@@ -4,7 +4,7 @@ const prisma = require('../lib/prisma');
 
 const verifyToken = require('../middleware/auth');
 // GET all students
-router.get('/', async (req, res) => {
+router.get('/',verifyToken, async (req, res) => {
   try {
     const students = await prisma.student.findMany();
     res.json(students);
