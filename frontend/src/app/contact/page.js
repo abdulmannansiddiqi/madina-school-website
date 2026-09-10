@@ -1,5 +1,6 @@
 import Navbar from '../../components/Navbar';
 import Footer from '../../components/Footer';
+import PageBackground from '../../components/PageBackground';
 
 export default function Contact() {
   return (
@@ -7,6 +8,7 @@ export default function Contact() {
       <Navbar />
 
       <main className="bg-[#F7F5EF] px-6 py-16">
+        <PageBackground>
         <div className="max-w-4xl mx-auto">
           <h1 className="text-4xl font-bold text-[#0F2557] mb-4 text-center">
             Contact Us
@@ -70,6 +72,7 @@ export default function Contact() {
             </div>
           </div>
         </div>
+        </PageBackground>
       </main>
 
       <Footer />

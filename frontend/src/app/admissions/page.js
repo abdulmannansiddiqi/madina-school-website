@@ -1,5 +1,6 @@
 import Navbar from '../../components/Navbar';
 import Footer from '../../components/Footer';
+import PageBackground from '../../components/PageBackground';
 
 export default function Admissions() {
   return (
@@ -7,6 +8,7 @@ export default function Admissions() {
       <Navbar />
 
       <main className="bg-[#F7F5EF] px-6 py-16">
+        <PageBackground>
         <div className="max-w-3xl mx-auto text-center">
           <h1 className="text-4xl font-bold text-[#0F2557] mb-4">
             Admissions
@@ -57,6 +59,7 @@ export default function Admissions() {
             </ul>
           </div>
         </div>
+        </PageBackground>
       </main>
 
       <Footer />
