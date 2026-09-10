@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
+import Link from 'next/link';
 
 export default function AdminDashboard() {
   const [checking, setChecking] = useState(true);
@@ -46,13 +47,19 @@ export default function AdminDashboard() {
         </div>
 
         <div className="grid sm:grid-cols-2 md:grid-cols-4 gap-4">
-          {['Teachers', 'Students', 'News', 'Achievements'].map((item) => (
-            <div
-              key={item}
-              className="bg-white border border-gray-200 rounded-lg p-6 text-center font-semibold text-[#0F2557]"
+          {[
+            { name: 'Teachers', href: '/admin/teachers' },
+            { name: 'Students', href: '/admin/students' },
+            { name: 'News', href: '/admin/news' },
+            { name: 'Achievements', href: '/admin/achievements' },
+          ].map((item) => (
+            <Link
+              key={item.name}
+              href={item.href}
+              className="bg-white border border-gray-200 rounded-lg p-6 text-center font-semibold text-[#0F2557] hover:shadow-md transition-shadow"
             >
-              {item}
-            </div>
+              {item.name}
+            </Link>
           ))}
         </div>
       </div>
