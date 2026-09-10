@@ -18,8 +18,12 @@ router.post('/signup', async (req, res) => {
 
     res.status(201).json({ id: newAdmin.id, name: newAdmin.name, email: newAdmin.email });
   } catch (error) {
-    res.status(500).json({ error: 'Something went wrong' });
+  if (error.code === 'P2002') {
+    return res.status(409).json({ error: 'This email is already registered' });
   }
+  console.error(error);
+  res.status(500).json({ error: 'Something went wrong' });
+}
 });
 
 // LOGIN
