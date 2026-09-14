@@ -10,7 +10,7 @@ export default function Teachers() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/news`).then((res) => res.json())
+    fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/teachers`).then((res) => res.json())
       .then((data) => {
         setTeachers(data);
         setLoading(false);

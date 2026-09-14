@@ -16,7 +16,6 @@ export default function AdminTeachers() {
   const [subject, setSubject] = useState('');
   const [qualification, setQualification] = useState('');
   const [isPublic, setIsPublic] = useState(true);
-  const [showPhoto, setShowPhoto] = useState(true);
   const [formError, setFormError] = useState('');
 
   useEffect(() => {
@@ -57,7 +56,6 @@ export default function AdminTeachers() {
           subject,
           qualification,
           isPublic,
-          showPhoto,
         }),
       });
 
@@ -73,7 +71,6 @@ export default function AdminTeachers() {
       setSubject('');
       setQualification('');
       setIsPublic(true);
-      setShowPhoto(true);
 
       // Refresh the list
       loadTeachers();
@@ -160,14 +157,6 @@ export default function AdminTeachers() {
                 onChange={(e) => setIsPublic(e.target.checked)}
               />
               Show on website
-            </label>
-            <label className="flex items-center gap-2">
-              <input
-                type="checkbox"
-                checked={showPhoto}
-                onChange={(e) => setShowPhoto(e.target.checked)}
-              />
-              Show photo
             </label>
           </div>
 
