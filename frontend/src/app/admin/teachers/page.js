@@ -31,7 +31,7 @@ export default function AdminTeachers() {
 
   function loadTeachers() {
     setLoading(true);
-    fetch('http://localhost:5000/api/teachers')
+    fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/teachers`)
       .then((res) => res.json())
       .then((data) => {
         setTeachers(data);
@@ -45,7 +45,7 @@ export default function AdminTeachers() {
     const token = localStorage.getItem('adminToken');
 
     try {
-      const res = await fetch('http://localhost:5000/api/teachers', {
+      const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/teachers`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -88,7 +88,7 @@ export default function AdminTeachers() {
 
     const token = localStorage.getItem('adminToken');
 
-    await fetch(`http://localhost:5000/api/teachers/${id}`, {
+    await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/teachers/${id}`, {
       method: 'DELETE',
       headers: { Authorization: `Bearer ${token}` },
     });

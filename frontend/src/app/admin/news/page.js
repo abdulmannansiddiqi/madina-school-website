@@ -27,7 +27,7 @@ export default function AdminNews() {
 
   function loadNews() {
     setLoading(true);
-    fetch('http://localhost:5000/api/news')
+    fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/news`)
       .then((res) => res.json())
       .then((data) => {
         setNews(data);
@@ -41,7 +41,7 @@ export default function AdminNews() {
     const token = localStorage.getItem('adminToken');
 
     try {
-      const res = await fetch('http://localhost:5000/api/news', {
+      const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/news`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -72,7 +72,7 @@ export default function AdminNews() {
 
     const token = localStorage.getItem('adminToken');
 
-    await fetch(`http://localhost:5000/api/news/${id}`, {
+    await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/news/${id}`, {
       method: 'DELETE',
       headers: { Authorization: `Bearer ${token}` },
     });

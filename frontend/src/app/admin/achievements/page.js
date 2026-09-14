@@ -28,7 +28,7 @@ export default function AdminAchievements() {
 
   function loadAchievements() {
     setLoading(true);
-    fetch('http://localhost:5000/api/achievements')
+    fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/achievements`)
       .then((res) => res.json())
       .then((data) => {
         setAchievements(data);
@@ -42,7 +42,7 @@ export default function AdminAchievements() {
     const token = localStorage.getItem('adminToken');
 
     try {
-      const res = await fetch('http://localhost:5000/api/achievements', {
+      const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/achievements`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -79,7 +79,7 @@ export default function AdminAchievements() {
 
     const token = localStorage.getItem('adminToken');
 
-    await fetch(`http://localhost:5000/api/achievements/${id}`, {
+    await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/achievements/${id}`, {
       method: 'DELETE',
       headers: { Authorization: `Bearer ${token}` },
     });

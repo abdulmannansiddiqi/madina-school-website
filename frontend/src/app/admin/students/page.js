@@ -32,7 +32,7 @@ export default function AdminStudents() {
   function loadStudents() {
     const token = localStorage.getItem('adminToken');
     setLoading(true);
-    fetch('http://localhost:5000/api/students', {
+    fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/students`, {
       headers: { Authorization: `Bearer ${token}` },
     })
       .then((res) => res.json())
@@ -48,7 +48,7 @@ export default function AdminStudents() {
     const token = localStorage.getItem('adminToken');
 
     try {
-      const res = await fetch('http://localhost:5000/api/students', {
+      const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/students`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -81,7 +81,7 @@ export default function AdminStudents() {
 
     const token = localStorage.getItem('adminToken');
 
-    await fetch(`http://localhost:5000/api/students/${id}`, {
+    await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/students/${id}`, {
       method: 'DELETE',
       headers: { Authorization: `Bearer ${token}` },
     });
