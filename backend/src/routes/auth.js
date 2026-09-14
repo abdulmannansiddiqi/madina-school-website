@@ -5,25 +5,9 @@ const jwt = require('jsonwebtoken');
 const prisma = require('../lib/prisma');
 
 // SIGNUP - create a new admin (use once, then maybe disable/protect this)
-router.post('/signup', async (req, res) => {
-  try {
-    const { name, email, password } = req.body;
-
-    // Hash the password before saving
-    const hashedPassword = await bcrypt.hash(password, 10);
-
-    const newAdmin = await prisma.admin.create({
-      data: { name, email, password: hashedPassword },
-    });
-
-    res.status(201).json({ id: newAdmin.id, name: newAdmin.name, email: newAdmin.email });
-  } catch (error) {
-  if (error.code === 'P2002') {
-    return res.status(409).json({ error: 'This email is already registered' });
-  }
-  console.error(error);
-  res.status(500).json({ error: 'Something went wrong' });
-}
+// SIGNUP - disabled for security after initial admin creation
+router.post('/signup', (req, res) => {
+  return res.status(403).json({ error: 'Signup is disabled' });
 });
 
 // LOGIN
