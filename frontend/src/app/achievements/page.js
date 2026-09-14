@@ -10,7 +10,7 @@ export default function Achievements() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/news`)
+    fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/achievements`)
       .then((res) => res.json())
       .then((data) => {
         setAchievements(data);

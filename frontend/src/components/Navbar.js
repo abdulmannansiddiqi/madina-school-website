@@ -10,6 +10,7 @@ const links = [
   { name: 'Admissions', href: '/admissions' },
   { name: 'Gallery', href: '/gallery' },
   { name: 'News', href: '/news' },
+  { name: 'Achievements', href: '/achievements' },
   { name: 'Contact', href: '/contact' },
 ];
 
