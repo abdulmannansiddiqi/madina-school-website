@@ -61,4 +61,4 @@ Both need a `.env` / `.env.local` file with the appropriate variables (`DATABASE
 
 ## Author
 
-**Abdul Manan Siddiqi**
+**Abdul Mannan Siddiqi**
